@@ -258,21 +258,21 @@ a {
 }
 
 .completedRed {
-	background: rgba(130, 0, 0, 0.25) url(http://angelicchaos.com/tenchuz/assets/icons/redx.png) center no-repeat;
+	background: rgba(130, 0, 0, 0.25) url(./images/redx.png) center no-repeat;
 	box-shadow: 0 0 50px 5px rgba(255, 0, 0, 0.87) inset;
 	background-size: contain;
 	color: #eee;
 }
 
 .completedGreen {
-	background: rgba(0, 130, 0, 0.25) url(http://angelicchaos.com/tenchuz/assets/icons/checkmark.png) center no-repeat;
+	background: rgba(0, 130, 0, 0.25) url(./imgaes/checkmark.png) center no-repeat;
 	box-shadow: 0 0 50px 5px rgba(0, 255, 0, 0.87) inset;
 	background-size: contain;
 	color: #eee;
 }
 
 .completedMagenta {
-	background: rgba(120, 0, 120, 0.25) url(http://angelicchaos.com/tenchubingo/images/checkmarkBlackMagenta.png) center no-repeat;
+	background: rgba(120, 0, 120, 0.25) url(./images/checkmarkBlackMagenta.png) center no-repeat;
 	box-shadow: 0 0 50px 5px rgba(200, 0, 200, 0.87) inset;
 	background-size: contain;
 	color: #eee;
