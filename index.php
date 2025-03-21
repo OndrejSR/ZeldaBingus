@@ -1,0 +1,132 @@
+<!doctype html>
+<!--©Ondrej 2025 | AngelicChaos Productions-->
+<!--TotK Bingus PUBLIC RELEASE v1.6-->
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#222222" />
+<link rel="shortcut icon" href="./images/MNFIcon.ico">
+<link rel="stylesheet" type="text/css" href="zeldaBingusStyles.css">	
+<title>Zelda Bingus</title>
+</head>
+
+<body>
+	<div id="container">
+
+		<div id="header">
+			<h1>Zelda Bingus v1.6</h1>&nbsp;<h2 id="rulesHeading"><a id="rulesLink" href="https://docs.google.com/spreadsheets/d/1PfDEJaIZF16xtVEsyRg14nMhz9jdVyLpdCBwDEmloAA/edit#gid=552661027" target="_blank" rel="noopener noreferrer">Link to Objective Set</a></h2>
+		</div>
+		
+		<div id="configParent">
+			<strong>Settings:</strong>&nbsp;
+				Game Selection: 
+				<select id="gameSelect">
+					<option value="none" selected disabled hidden>Select a Game</option>
+					<option value="1771630483" selected="selected">TotK</option>					
+				</select>
+			
+				&nbsp;Game Type: 
+				<select id="gameType" onchange = "gameTypeUpdate()">
+					<option value="none" selected disabled hidden>Select a Mode</option>	
+					<option value="std">Standard</option>
+					<option value="BtG">Beat the Game</option>
+					<option value="1D">One Dungeon</option>
+					<option value="forced1D">One Random Dungeon</option>
+					<option value="forcedRP">Two Dungeon (1 Random)</option>
+					<option value="forced2D">Two Random Dungeons</option>
+					<!--<option value="AD">All Dungeons</option>-->
+				</select>
+			
+				&nbsp;Card Size: 
+				<select id="cardSize">
+					<option value="3">3x3</option>
+					<option value="4">4x4</option>
+					<option value="5" selected="selected">5x5</option>
+					<option value="6">6x6</option>
+					<option value="7">7x7</option>
+				</select>
+				&nbsp;<button type="button" onclick="loadData(false)">Generate Random Card!</button>
+				<span id="cardCodeParent">
+					OR
+					&nbsp;Card Code Input:&nbsp;
+					<input type=text id="codeInput" placeholder="Paste a Card Code here">
+					&nbsp;<button type="button" onclick="decodeCard(true, null)">Generate Card from Code!</button>
+					<button type="button" class="ShowHideToggle" onClick="toggleSettings()">Toggle Settings</button>		
+				</span>
+				<!--<input type=text id="searchInput" onInput="searchObjSet(this.value)" placeholder="Search">-->
+			
+				<div id="styleSettingsParent">
+					<span id="cardFontSizeParent" class="hide">
+					Font Face:&nbsp;
+					<select id="fontFaceSelect" onChange="changeFont(this.value)">
+						<option value="calamity" selected="selected">TotK</option>
+						<option value="Verdana, sans-serif">Sans-Serif</option>
+						<option value="Liberation, serif">Serif</option>
+					</select>
+					<label for="cardFontSize" id = cardFontSizeLabel>Card Font Scaling: x1.0</label>
+					<input type="range" id="cardFontSize" name="cardFontSize" min="0.5" max="2.0" value="1" step="0.1">
+					<label for="lockFontSize">Lock Text Size</label>
+					<input type="radio" id="lockFontSize1" name="lockFontSize" value="Yes"/>
+					<label for="Yes">Yes</label>
+					<input type="radio" id="lockFontSize2" name="lockFontSize" value="No" checked/>
+					<label for="No">No</label>
+						
+					<br>
+						
+					Objective Completion Style:&nbsp;
+					<label for="redX" class="radioLabel">Red X</label>
+					<input type="radio" id="redX" name="compStyle" class="radio" value="Red" onClick="setCompletionType(this.value)">
+					<label for="greenCheck" class="radioLabel">Green Checkmark</label>
+					<input type="radio" id="greenCheck" class="radio" name="compStyle" value="Green" onClick="setCompletionType(this.value)">
+					<label for="magentaCheck" class="radioLabel">Magenta Checkmark</label>
+					<input type="radio" id="magentaCheck" class="radio" name="compStyle" value="Magenta" checked onClick="setCompletionType(this.value)">	
+					</span>
+				</div>
+
+		</div>
+		
+		<div id="bingoParent">
+			<div id="cardRevealDiv" class="hide" onClick="cardReveal()">
+				<div id="cardRevealBtn">Reveal Card</div>
+			</div>
+			<div id="bingoCard"></div>
+		</div>
+		
+		<div id="infoParent" class="hide">
+			<div id="infoRow1">
+			<p id = "objectivesInfo">Selected <span id = "selectedAmount">x</span> Objectives from <span id = "totalObjectives">y</span> Total&nbsp;-&nbsp;<span id = "markedCount">0</span> Selected&nbsp;&nbsp;<span id = "completedCount">0</span> Completed</p>
+			
+			<span id="toggleSettings">
+				<button type="button" class="ShowHideToggle" onClick="toggleSettings()">Toggle Settings</button>
+			</span>
+			</div>
+			
+			<p id="codeDisplay">Card&nbsp;Code:&nbsp;<span id="cardCode"></span></p>
+			&nbsp;<button type="button" id="copyCodeBtn" onclick="copyCode()">Copy Code</button>
+			&nbsp;<button type="button" id="viewHistoryBtn" onclick="viewHistory()">Toggle Session History</button>		
+				
+			<div id="sessionHistoryParent" class="hide">
+				<br><strong>Session History</strong>
+				<ol id="sessionHistory"></ol>
+			</div>
+		</div>
+		
+		<div id="tooltip" class="hide">Example Tooltip</div>
+		
+		<div id="loadingScreenParent" class="hide">
+			<img src="../tenchuz/assets/icons/checkmark.png"/>
+			<h1 id="lsText">Loading Objectives Data<br></h1>
+			<img src="../tenchubingo/images/checkmarkBlackMagenta.png"/>
+		</div>
+		
+	</div><!--END OF CONTAINER DIV-->
+
+			
+	
+	<footer>
+		<p><!--A Tenchu Speedrunning Community Project: Join our <a href="https://discord.gg/UpAAyKk" target="_blank" rel="noopener noreferrer">Discord Server</a>!&nbsp;|&nbsp;-->Developed by <a href="https://www.twitch.tv/tzsr_ondrej" target="_blank" rel="noopener noreferrer">TZSR_Ondrej</a>&nbsp;-&nbsp;Help Cover Server Costs:&nbsp;<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DX7BXZFDDL8AA" alt="Donate to TZSR!" target="_blank" rel="noopener noreferrer"><img src="../tenchuz/assets/icons/paypal-donate-btn.gif" id="donateBtn"></a></p>
+	</footer>
+<script src="./zeldaBingusMain.js"></script>
+</body>
+</html>

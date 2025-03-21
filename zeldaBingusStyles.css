@@ -1,0 +1,347 @@
+/*©Ondrej 2024 | AngelicChaos Productions*/
+/*GENRAL STYLES*/
+@font-face {
+	font-family: 'calamity';
+	src:url('./fonts/Calamity-Regular.otf') format('woff');
+}
+
+body {
+	font-family: 'calamity';
+	color: #eee;
+	background: url("./images/botwMSWeb.jpg") fixed no-repeat;
+	background-size: cover;
+	
+}
+
+#container {
+	width: 90%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+h1, h2 {
+	margin: 10px;
+}
+
+footer {
+	width: 100%;
+	text-align: center;
+}
+
+#donateBtn {
+	transform: translateY(5px);
+}
+
+a {
+	/*text-decoration: none;*/
+	color: inherit;
+}
+
+#header {
+	display: flex;
+	justify-content: space-between;
+}
+
+#header h1, #header h2 {
+	display: inline-block;
+}
+
+/*CONFIG MENU STYLES*/
+#configParent {
+	text-align: center;
+}
+
+#cardCodeParent {
+	display: inline-block;
+	padding: 5px 5px 5px 10px;
+	text-align: right;
+}
+
+#styleSettingsParent {
+	padding: 0px 0px 5px 0px;
+}
+
+#cardCode {
+	text-align: center;
+	font-size: 0.5rem;
+}
+
+#codeDisplay {
+	overflow-x: auto;
+}
+
+#loadingScreenParent {
+/*	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 75vh;
+	background: rgba(0,0,0,0.87);
+	border-radius: 50px;*/
+	background: rgba(0,0,0,0.66);
+	box-shadow: 0 0 50px 5px rgba(245, 245, 245, 0.87) inset;
+	border-radius: 10px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	/*transform: translate(-50%, -50%);*/
+	width: 100%;
+	height: 100vh;
+}
+
+#lsText {
+	text-align: center;
+	display: block;
+}
+
+#lsText:after {
+	display: inline-block;
+	animation: dotty steps(1,end) 1s infinite;
+	content: '';
+}
+
+@keyframes dotty {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '. .'; }
+  75%  { content: '. . .'; }
+  100% { content: ''; }
+}
+
+#lsIcons img {
+	display: inline-block;
+}
+
+/*USER-EDITABLE STYLES SETTINGS*/
+#styleSettingsParent {
+	display: flex;
+	justify-content: center;
+}
+
+#completionOptionsParent {
+	/*text-align: left;*/
+}
+
+#cardFontSizeParent {
+	white-space: nowrap;
+	/*text-align: right;*/
+}
+
+#cardFontSize {
+	/*margin: 0 10px 0 -10px;*/
+	transform: translateY(5px);
+	cursor: pointer;
+}
+
+#cardFontSizeLabel {
+	display: inline-block;
+	width: 175px;
+}
+
+.radio {
+	cursor: pointer;
+}
+
+.radioLabel {
+	user-select: none;
+	cursor: pointer;
+}
+
+#toggleSettings {
+	/*position: fixed;
+	top: 50px;
+	left: 10px;*/
+}
+
+/*BINGO CARD STYLES*/
+#cardRevealDiv {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-color: rgba(30,30,30,1);
+	border: solid 1px #ccc;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: 0;
+	transition: box-shadow 1s;
+}
+
+#cardRevealDiv:hover {
+	border-color: #fff;
+	box-shadow: 0 0 100px 10px rgba(73, 213, 156, 1) inset;
+}
+
+#cardRevealBtn {
+	display: block;
+	/*position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(-50%, -50%);*/
+	padding: 20px;
+	border: solid 2px #eee;
+	border-radius: 25px;
+	transition: box-shadow 0.5s;
+	font-size: 48px;
+}
+
+#cardRevealBtn:hover {
+	border-color: rgba(73, 213, 156, 1);
+	color: #eee;
+	box-shadow: 0 0 10px 5px rgba(73, 213, 156, 0.87) inset;
+	/*box-shadow: 0 0 20px 5px rgba(73, 213, 156, 1);*/	
+}
+
+#bingoParent {
+	position: relative;
+	width: 800px;
+	height: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*Table*/
+#bingoCard {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 800px;
+	height: 800px;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-color: rgba(30,30,30,0.75);
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	border: solid 1px black;
+	/*align-items: center;
+	justify-content: center;*/
+}
+
+.bingoCell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border: solid 1px #000;
+	padding: 1px;
+	text-shadow:
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;
+}
+
+.bingoCell:hover {
+	border-color: #ccc;
+	color: #eee;
+	box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.25) inset;
+}
+
+.modeObjective {
+	font-weight: bold;
+	box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.2) inset;
+}
+
+.error {
+	/*border: solid 5px red;*/
+	box-shadow: 0 0 20px 5px rgba(255, 0, 0, 1);
+	border-radius: 5px;
+}
+
+.completedRed {
+	background: rgba(130, 0, 0, 0.25) url(http://angelicchaos.com/tenchuz/assets/icons/redx.png) center no-repeat;
+	box-shadow: 0 0 50px 5px rgba(255, 0, 0, 0.87) inset;
+	background-size: contain;
+	color: #eee;
+}
+
+.completedGreen {
+	background: rgba(0, 130, 0, 0.25) url(http://angelicchaos.com/tenchuz/assets/icons/checkmark.png) center no-repeat;
+	box-shadow: 0 0 50px 5px rgba(0, 255, 0, 0.87) inset;
+	background-size: contain;
+	color: #eee;
+}
+
+.completedMagenta {
+	background: rgba(120, 0, 120, 0.25) url(http://angelicchaos.com/tenchubingo/images/checkmarkBlackMagenta.png) center no-repeat;
+	box-shadow: 0 0 50px 5px rgba(200, 0, 200, 0.87) inset;
+	background-size: contain;
+	color: #eee;
+}
+
+.selected {
+	background: rgba(0, 0, 130, 0.25);
+	color: #eee;
+	box-shadow: 0 0 50px 5px rgba(0, 0, 255, 0.87) inset;
+}
+
+/*INFO STYLES*/
+#infoRow1 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: rgba(0,0,0,.5);
+	margin: 5px 0;
+	padding: 0 15px;
+	border-radius: 25px;
+}
+
+#completedCount, #markedCount{
+	font-weight: 900;
+	background: rgba(0,0,0,.87);
+	border: solid 1px #eee;
+	padding: 2px 5px;
+}
+
+/*SESSION HISTORY STYLES*/
+#sessionHistory span{
+	font-size: 1rem;
+	overflow: hidden;
+	padding: 5px 5px 5px 0;
+}
+
+/*#sessionHistory li::marker {
+	font-size: 1rem;
+}*/
+
+/*BINGO CARD BACKGROUNDS*/
+.totkBingus {
+	background: url(../tenchubingo/images/totkBingusBackground.jpg) center no-repeat;
+}
+
+/*TOOLTIP STYLES*/
+#tooltip {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background-color: rgba(35,35,35,0.87);
+	padding: 0.5rem;
+	text-align: center;
+	border: solid 1px #eee;
+	border-radius: 5px;
+	min-width: 250px;
+	max-width: 500px;
+}
+
+/*MISCELLANEOUS*/
+.showBlock {
+	display: block;
+}
+
+.showInlineBlock {
+	display: inline-block;
+}
+
+.hide {
+	display: none !important;
+}
+
