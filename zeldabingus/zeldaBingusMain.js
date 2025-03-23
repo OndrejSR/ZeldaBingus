@@ -301,7 +301,8 @@ function cellSizeAdjust() {
 	let currentFontSize = document.getElementById("cardFontSize").value;
 	let fontSizeLock;
 	let fontSize;
-	let defaultFontSizes = [2.0, 1.6, 1.3, 0.9, 0.6];
+	let defaultFontSizes = [1, 1, 1, 1, 1];
+	//let defaultFontSizes = [2.0, 1.6, 1.3, 0.9, 0.6];
 	
 	try {
 		fontSizeLock = document.querySelector('input[name="lockFontSize"]:checked').value;
